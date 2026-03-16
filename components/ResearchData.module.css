@@ -1,0 +1,113 @@
+.section {
+  background: #f8f9fb;
+  padding: 80px 0;
+}
+
+.container {
+  width: min(1200px, 100% - 3rem);
+  margin-inline: auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  color: #1f2933;
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.divider {
+  width: 96px;
+  height: 3px;
+  background: #f97316;
+  border-radius: 999px;
+  margin: 0.9rem auto 0;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.leftCol {
+  display: grid;
+  gap: 1rem;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+}
+
+.cardTitle {
+  color: #1f2933;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #1f2933;
+  font-size: 0.94rem;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 0.65rem 0.75rem;
+  border-bottom: 1px solid #edf0f4;
+}
+
+.table thead th {
+  background: #f3f4f6;
+  color: #4b5563;
+  font-weight: 600;
+}
+
+.table tbody tr:hover {
+  background: #fff8f3;
+}
+
+.chartCard {
+  min-height: 420px;
+}
+
+.chartWrap {
+  position: relative;
+  height: 360px;
+}
+
+@media (max-width: 1024px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .chartCard {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    width: min(1200px, 100% - 1.5rem);
+  }
+
+  .table {
+    font-size: 0.88rem;
+  }
+}

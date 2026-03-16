@@ -3,26 +3,20 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
+const EASE_STANDARD = [0.4, 0, 0.2, 1] as const;
+
 export default function HeroVideo() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
-
-  // Parallax effect - video moves up as user scrolls
-  const videoY = useTransform(scrollY, [0, 500], [0, 150]);
-
-  // Hero section shrinks as user scrolls
-  const heroHeight = useTransform(scrollY, [0, 500], ["100vh", "60vh"]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0.3]);
+  const opacity = useTransform(scrollY, [0, 240], [1, 0.35]);
 
   return (
     <motion.div
       ref={containerRef}
       className="relative w-full overflow-hidden"
-      style={{ height: heroHeight }}>
-      {/* Video Background with Parallax */}
-      <motion.div
-        className="absolute inset-0 w-full h-full"
-        style={{ y: videoY }}>
+      style={{ height: "100vh" }}>
+      {/* Video Background */}
+      <div className="absolute inset-0 w-full h-full">
         <video
           autoPlay
           muted
@@ -30,47 +24,46 @@ export default function HeroVideo() {
           playsInline
           className="absolute top-0 left-0 w-full h-full object-cover">
           {/* Replace with your actual video URL */}
-          <source
-            src="https://assets.mixkit.co/videos/preview/mixkit-university-campus-students-walking-4932-large.mp4"
-            type="video/mp4"
-          />
+          <source src="/Video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
         {/* Dark Gradient Overlay for Readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
-      </motion.div>
-
-      {/* Department Text at Bottom */}
-      <div>
-        {/* <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-extralight tracking-[0.3em] uppercase">
-          Department of
-        </h1> */}
-        <motion.div
-          className="absolute bottom-0 left-0 right-0 pb-16 flex justify-center items-end h-full"
-          style={{ opacity }}
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}>
-          <h1 className="text-white md:text-8xl lg:text-8xl font-extralight tracking-[0.3em] uppercase font-mono">
-            Computer Science
-          </h1>
-        </motion.div>
+        <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/40 to-black/70" />
       </div>
 
+      {/* Department Text at Bottom */}
+      <motion.div
+        className="absolute bottom-0 left-0 right-0 pb-16 flex justify-center items-end h-full"
+        style={{ opacity }}
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.32, delay: 0.08, ease: EASE_STANDARD }}>
+        <div className="text-center px-4">
+          <p className="text-white/85 text-sm md:text-base lg:text-lg font-light tracking-[0.28em] uppercase mb-2">
+            Department of
+          </p>
+          <h1 className="text-white text-4xl md:text-6xl lg:text-7xl font-extralight tracking-[0.22em] uppercase">
+            Computer Science
+          </h1>
+        </div>
+      </motion.div>
+
       {/* Scroll Indicator */}
-      {/* <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      <motion.a
+        href="#placement"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 will-transform"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.5 }}
+        transition={{ duration: 0.32, delay: 0.18, ease: EASE_STANDARD }}
         style={{ opacity: useTransform(scrollY, [0, 200], [1, 0]) }}>
         <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="text-white/70 text-sm tracking-widest">
+          animate={{ y: [0, 4, 0] }}
+          transition={{ duration: 0.32, repeat: Infinity, ease: EASE_STANDARD }}
+          className="text-white/75 text-[11px] uppercase tracking-[0.18em] text-center">
+          Scroll
           <svg
-            className="w-6 h-6 mx-auto"
+            className="w-5 h-5 mx-auto mt-1"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24">
@@ -82,7 +75,7 @@ export default function HeroVideo() {
             />
           </svg>
         </motion.div>
-      </motion.div> */}
+      </motion.a>
     </motion.div>
   );
 }
