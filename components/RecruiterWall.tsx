@@ -25,7 +25,7 @@ const recruiters = [
 
 export default function RecruiterWall() {
   return (
-    <section className="py-20 px-6 md:px-12 lg:px-24 bg-white border-y border-slate-200">
+    <section className="py-20 px-6 md:px-12 lg:px-24 bg-white ">
       <div className="max-w-7xl mx-auto mb-12">
         <motion.h3
           initial={{ opacity: 0, y: 14 }}
