@@ -26,14 +26,11 @@ Chart.register(
   Legend,
 );
 
-const overviewTabs = [
-  "Overview",
-  "Placement Trends",
-  "Success Stories",
-  "Partnerships",
-] as const;
-
-type PlacementTab = (typeof overviewTabs)[number];
+type PlacementTab =
+  | "Overview"
+  | "Placement Trends"
+  | "Success Stories"
+  | "Partnerships";
 
 const salaryGrowth = [
   { year: "2020", avgLpa: 7.2, highestLpa: 17.0 },
@@ -83,7 +80,7 @@ const internships = [
 ];
 
 export default function PlacementAnalysis() {
-  const [activeTab, setActiveTab] = useState<PlacementTab>("Overview");
+  const [activeTab] = useState<PlacementTab>("Overview");
   const [placeholderMessage, setPlaceholderMessage] = useState(
     "Showing overview metrics.",
   );
@@ -159,43 +156,36 @@ export default function PlacementAnalysis() {
     return () => chartInstanceRef.current?.destroy();
   }, []);
 
-  const onTabClick = (tab: PlacementTab) => {
-    setActiveTab(tab);
-    setPlaceholderMessage(
-      `Showing ${tab.toLowerCase()} content with placeholder data.`,
-    );
-  };
-
   return (
-    <section className="overflow-hidden bg-[#EEEEFF] px-6 py-20 text-slate-900 md:px-12 lg:px-24">
+    <section className="section-shell overflow-hidden bg-[#EEEEFF] text-slate-900">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-120px" }}
           transition={{ duration: 0.32, ease: EASE_STANDARD }}
-          className="mb-10">
-          <p className="mb-3 inline-block rounded bg-orange-500 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">
+          className="mb-14">
+          <p className="type-label mb-3 inline-block rounded bg-orange-500 px-3 py-1 text-white">
             Department of Computer Science
           </p>
-          <h2 className="text-4xl font-semibold tracking-tight md:text-5xl">
+          <h2 className="type-h1">
             Placement &amp; Career{" "}
             <span className="text-orange-500">Insights</span>
           </h2>
-          <p className="mt-4 max-w-3xl text-base text-slate-600 md:text-lg">
+          <p className="type-body-lg mt-5 max-w-3xl text-slate-600">
             Pioneering professional growth and high-impact career trajectories
             for our CS graduates through industry-led ecosystems.
           </p>
         </motion.div>
 
-        <p className="mb-6 text-sm text-slate-600">{placeholderMessage}</p>
+        <p className="type-small mb-10 text-slate-600">{placeholderMessage}</p>
 
         {(activeTab === "Overview" || activeTab === "Placement Trends") && (
-          <div className="mb-14 grid grid-cols-1 gap-8 lg:grid-cols-3">
-            <div className="rounded-2xl border border-orange-100 bg-white p-7 lg:col-span-2">
-              <div className="mb-6 flex items-center justify-between">
-                <h3 className="text-xl font-bold">5-Year Salary Growth</h3>
-                <span className="rounded bg-orange-50 px-2 py-1 text-xs font-semibold text-orange-600">
+          <div className="mb-18 grid grid-cols-1 gap-10 lg:grid-cols-3">
+            <div className="rounded-3xl border border-orange-100 bg-white p-8 lg:col-span-2 xl:p-10">
+              <div className="mb-8 flex items-center justify-between">
+                <h3 className="type-h4">5-Year Salary Growth</h3>
+                <span className="type-label rounded bg-orange-50 px-2 py-1 text-orange-600">
                   Chart.js
                 </span>
               </div>
@@ -204,7 +194,7 @@ export default function PlacementAnalysis() {
               </div>
             </div>
 
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-5">
               {stats.map((item, idx) => (
                 <button
                   key={item.label}
@@ -216,23 +206,23 @@ export default function PlacementAnalysis() {
                   }
                   className={
                     idx === 0
-                      ? "rounded-2xl bg-orange-500 p-6 text-left text-white"
-                      : "rounded-2xl border border-orange-100 bg-white p-6 text-left"
+                      ? "rounded-3xl bg-orange-500 p-7 text-left text-white xl:p-8"
+                      : "rounded-3xl border border-orange-100 bg-white p-7 text-left xl:p-8"
                   }>
                   <p
                     className={
                       idx === 0
-                        ? "text-sm text-orange-100"
-                        : "text-sm text-slate-500"
+                        ? "type-small text-orange-100"
+                        : "type-small text-slate-500"
                     }>
                     {item.label}
                   </p>
-                  <p className="mt-1 text-4xl font-black">{item.value}</p>
+                  <p className="type-h2 mt-2">{item.value}</p>
                   <p
                     className={
                       idx === 0
-                        ? "mt-2 text-xs text-orange-100"
-                        : "mt-2 text-xs font-semibold text-orange-600"
+                        ? "type-label mt-2 text-orange-100"
+                        : "type-label mt-2 text-orange-600"
                     }>
                     {item.note}
                   </p>
@@ -244,8 +234,8 @@ export default function PlacementAnalysis() {
 
         {(activeTab === "Overview" || activeTab === "Success Stories") && (
           <div>
-            <div className="mb-6 flex items-center justify-between">
-              <h3 className="text-3xl font-black">
+            <div className="mb-8 flex items-center justify-between gap-4">
+              <h3 className="type-h3">
                 Wall of <span className="text-orange-500">Fame</span>
               </h3>
               <button
@@ -255,16 +245,16 @@ export default function PlacementAnalysis() {
                     "Success stories page will be connected with real alumni data soon.",
                   )
                 }
-                className="text-sm font-bold text-orange-600 hover:text-orange-700">
+                className="type-small type-interactive text-orange-600 hover:text-orange-700">
                 View all success stories
               </button>
             </div>
 
-            <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
               {fame.map((item) => (
                 <div
                   key={item.name}
-                  className="overflow-hidden rounded-2xl border border-orange-100 bg-white">
+                  className="overflow-hidden rounded-3xl border border-orange-100 bg-white">
                   <div className="flex h-36 items-center justify-center bg-linear-to-br from-orange-100 to-orange-50">
                     <div className="grid h-16 w-16 place-items-center rounded-full bg-white text-xl font-bold text-orange-600">
                       {item.name
@@ -274,14 +264,14 @@ export default function PlacementAnalysis() {
                         .join("")}
                     </div>
                   </div>
-                  <div className="p-5">
-                    <h4 className="text-lg font-bold text-slate-900">
+                  <div className="p-6">
+                    <h4 className="type-h4 text-slate-900">
                       {item.name}
                     </h4>
-                    <p className="mt-1 text-sm font-semibold text-orange-600">
+                    <p className="type-small mt-2 text-orange-600">
                       {item.role}
                     </p>
-                    <p className="mt-3 text-xs italic leading-relaxed text-slate-600">
+                    <p className="type-small mt-4 italic text-slate-600">
                       Placement-ready through projects, mentorship, and
                       internships.
                     </p>
@@ -292,7 +282,7 @@ export default function PlacementAnalysis() {
                           `Opening profile for ${item.name} (placeholder).`,
                         )
                       }
-                      className="mt-3 text-xs font-semibold text-orange-600 hover:text-orange-700">
+                      className="type-label type-interactive mt-5 text-orange-600 hover:text-orange-700">
                       Read story
                     </button>
                   </div>
@@ -303,12 +293,12 @@ export default function PlacementAnalysis() {
         )}
 
         {(activeTab === "Overview" || activeTab === "Partnerships") && (
-          <div className="mt-14 grid grid-cols-1 gap-10 lg:grid-cols-2">
+          <div className="mt-18 grid grid-cols-1 gap-12 lg:grid-cols-2">
             <div>
-              <h3 className="mb-5 text-3xl font-black">
+              <h3 className="type-h3 mb-6">
                 Industry Partnerships
               </h3>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {partnerships.map((partner) => (
                   <button
                     key={partner}
@@ -318,7 +308,7 @@ export default function PlacementAnalysis() {
                         `${partner} details are placeholder for now.`,
                       )
                     }
-                    className="rounded-xl border border-orange-100 bg-white p-4 text-left text-sm font-semibold text-slate-700 hover:border-orange-300">
+                    className="type-small type-interactive rounded-2xl border border-orange-100 bg-white p-5 text-left text-slate-700 hover:border-orange-300">
                     {partner}
                   </button>
                 ))}
@@ -326,8 +316,8 @@ export default function PlacementAnalysis() {
             </div>
 
             <div>
-              <h3 className="mb-5 text-3xl font-black">Internship Programs</h3>
-              <div className="space-y-4">
+              <h3 className="type-h3 mb-6">Internship Programs</h3>
+              <div className="space-y-5">
                 {internships.map((item, index) => (
                   <button
                     key={item.title}
@@ -339,11 +329,11 @@ export default function PlacementAnalysis() {
                     }
                     className={
                       index === 0
-                        ? "w-full rounded-2xl border-l-4 border-orange-500 bg-orange-50 p-5 text-left"
-                        : "w-full rounded-2xl border border-orange-100 bg-white p-5 text-left"
+                        ? "w-full rounded-3xl border-l-4 border-orange-500 bg-orange-50 p-6 text-left"
+                        : "w-full rounded-3xl border border-orange-100 bg-white p-6 text-left"
                     }>
-                    <h4 className="font-bold text-slate-900">{item.title}</h4>
-                    <p className="mt-1 text-sm italic text-slate-600">
+                    <h4 className="type-h4 text-slate-900">{item.title}</h4>
+                    <p className="type-small mt-3 italic text-slate-600">
                       {item.note}
                     </p>
                   </button>

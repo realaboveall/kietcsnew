@@ -34,23 +34,21 @@ export default function HeroVideo() {
 
       {/* Department Text at Bottom */}
       <motion.div
-        className="absolute bottom-0 left-0 right-0 pb-16 flex justify-center items-end h-full"
+        className="absolute bottom-0 left-0 right-0 pb-16 flex justify-center items-end h-full "
         style={{ opacity }}
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.32, delay: 0.08, ease: EASE_STANDARD }}>
         <div className="text-center px-4">
-          <p className="text-white/85 text-sm md:text-base lg:text-lg font-light tracking-[0.28em] uppercase mb-2">
-            Department of
-          </p>
-          <h1 className="text-white text-4xl md:text-6xl lg:text-7xl font-extralight tracking-[0.22em] uppercase">
+          {/* <p className="font-mono mb-2 text-white/85 text-3xl">Department of</p> */}
+          <h1 className="text-white uppercase font-mono font-extralight text-8xl tracking-widest">
             Computer Science
           </h1>
         </div>
       </motion.div>
 
       {/* Scroll Indicator */}
-      <motion.a
+      {/* <motion.a
         href="#placement"
         className="absolute bottom-8 left-1/2 -translate-x-1/2 will-transform"
         initial={{ opacity: 0 }}
@@ -60,7 +58,7 @@ export default function HeroVideo() {
         <motion.div
           animate={{ y: [0, 4, 0] }}
           transition={{ duration: 0.32, repeat: Infinity, ease: EASE_STANDARD }}
-          className="text-white/75 text-[11px] uppercase tracking-[0.18em] text-center">
+          className="type-label text-center text-white/75">
           Scroll
           <svg
             className="w-5 h-5 mx-auto mt-1"
@@ -75,7 +73,7 @@ export default function HeroVideo() {
             />
           </svg>
         </motion.div>
-      </motion.a>
+      </motion.a> */}
     </motion.div>
   );
 }

@@ -20,25 +20,25 @@ export default function CoeShowcase() {
   }, []);
 
   return (
-    <section className="bg-slate-100 px-6 py-16 md:px-12 lg:px-24">
-      <div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-2 lg:gap-12">
+    <section className="section-shell bg-slate-100">
+      <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.32, ease: EASE_STANDARD }}>
-          <p className="text-sm font-medium tracking-wide text-slate-600 md:text-[20px]">
+          <p className="type-label text-slate-600">
             Centre of Excellence
           </p>
 
-          <h3 className="mt-4 text-3xl font-semibold leading-tight text-slate-900 md:text-5xl">
+          <h3 className="type-h1 mt-5 text-slate-900">
             Building the
             <span className="text-orange-500"> Future of Intelligence</span>
             <br />
             with Apple & HP
           </h3>
 
-          <p className="mt-6 max-w-xl text-lg leading-9 text-slate-600 md:text-[22px] md:leading-[1.7]">
+          <p className="type-body-lg mt-7 max-w-xl text-slate-600">
             Powered by the NVIDIA DGX A100 Supercomputer, KIET enables
             enterprise-grade AI computing for advanced research in the field of
             AI. Students build and deploy complex AI models on industry-level
@@ -48,7 +48,7 @@ export default function CoeShowcase() {
 
           <button
             type="button"
-            className="mt-8 rounded-xl bg-orange-500 px-9 py-4 text-base font-semibold text-white shadow-md transition-colors hover:bg-orange-600">
+            className="type-button type-interactive mt-10 rounded-2xl bg-orange-500 px-10 py-4 text-white shadow-md hover:bg-orange-600">
             View More
           </button>
         </motion.div>
@@ -58,8 +58,8 @@ export default function CoeShowcase() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.34, ease: EASE_STANDARD }}
-          className="rounded-2xl border-8 border-white bg-white p-2 shadow-sm">
-          <div className="relative aspect-video overflow-hidden rounded-lg">
+          className="rounded-3xl border-8 border-white bg-white p-3 shadow-sm">
+          <div className="relative aspect-video overflow-hidden rounded-2xl">
             <div
               className="flex h-full w-full transition-transform duration-700 ease-out"
               style={{ transform: `translateX(-${activeIndex * 100}%)` }}>

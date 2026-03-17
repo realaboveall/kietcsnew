@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 const navItems = [
@@ -27,7 +28,7 @@ export default function FixedHeader() {
   };
 
   const baseItemClass =
-    "relative px-2 py-3 text-[13px] xl:text-sm font-medium text-[#333] transition-colors duration-(--motion-normal) ease-(--ease-standard) hover:text-[#f07a00] after:absolute after:left-2 after:right-2 after:bottom-1 after:h-0.5 after:origin-left after:scale-x-0 after:bg-[#f07a00] after:transition-transform after:duration-(--motion-normal) after:ease-(--ease-standard) hover:after:scale-x-100";
+    "type-nav type-interactive relative px-2 py-3 text-[#333] transition-colors duration-(--motion-normal) ease-(--ease-standard) hover:text-[#f07a00] after:absolute after:left-2 after:right-2 after:bottom-1 after:h-0.5 after:origin-left after:scale-x-0 after:bg-[#f07a00] after:transition-transform after:duration-(--motion-normal) after:ease-(--ease-standard) hover:after:scale-x-100";
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-slate-200/80 shadow-[0_4px_18px_rgba(15,23,42,0.06)]">
@@ -40,9 +41,11 @@ export default function FixedHeader() {
             href="#overview"
             className="z-10 inline-flex items-center"
             aria-label="KIET Home">
-            <img
+            <Image
               src="/logo.png"
               alt="KIET logo"
+              width={120}
+              height={40}
               className="h-10 w-auto object-contain"
             />
           </a>
@@ -117,7 +120,7 @@ export default function FixedHeader() {
                     <a
                       href={item.href}
                       onClick={() => handleItemClick(item.href)}
-                      className={`block rounded-md px-3 py-2 text-sm transition-colors duration-(--motion-fast) ease-(--ease-standard) ${
+                      className={`type-nav type-interactive block rounded-md px-3 py-2 transition-colors duration-(--motion-fast) ease-(--ease-standard) ${
                         isActive
                           ? "bg-blue-50 text-blue-700"
                           : "text-[#333] hover:bg-orange-50 hover:text-[#f07a00]"

@@ -50,7 +50,7 @@ const cardVariants: Variants = {
 
 export default function DepartmentIntro() {
   return (
-    <section className="bg-white py-24 px-6 md:px-12 lg:px-24">
+    <section className="section-shell bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Department Heading */}
         <motion.div
@@ -58,12 +58,12 @@ export default function DepartmentIntro() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.32, ease: EASE_STANDARD }}
-          className="text-center mb-16 will-transform">
-          <h2 className="text-5xl md:text-6xl font-light text-gray-900 mb-6 tracking-tight">
+          className="text-center mb-20 will-transform">
+          <h2 className="type-h1 mb-6 text-gray-900">
             Excellence in Computing
           </h2>
           <div className="w-24 h-1 bg-orange-500 mx-auto mb-8"></div>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light">
+          <p className="type-body-lg mx-auto max-w-3xl text-gray-600">
             Pioneering the future of technology through innovative education,
             groundbreaking research, and collaborative excellence. Join us in
             shaping tomorrow&apos;s digital landscape.
@@ -76,7 +76,7 @@ export default function DepartmentIntro() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-90px" }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20">
+          className="mt-24 grid grid-cols-1 gap-10 md:grid-cols-3">
           {cards.map((card, index) => (
             <motion.div
               key={index}
@@ -84,24 +84,24 @@ export default function DepartmentIntro() {
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.18, ease: EASE_STANDARD }}
               className="group will-transform">
-              <div className="bg-linear-to-br from-gray-50 to-white border border-gray-200 rounded-2xl p-8 h-full shadow-sm hover:shadow-md transition-shadow duration-(--motion-normal) ease-(--ease-standard)">
+              <div className="h-full rounded-2xl border border-gray-200 bg-linear-to-br from-gray-50 to-white p-10 shadow-sm transition-shadow duration-(--motion-normal) ease-(--ease-standard) hover:shadow-md">
                 {/* Icon */}
-                <div className="text-6xl mb-6 transform group-hover:scale-[1.02] transition-transform duration-(--motion-normal) ease-(--ease-standard)">
+                <div className="mb-8 text-6xl transform transition-transform duration-(--motion-normal) ease-(--ease-standard) group-hover:scale-[1.02]">
                   {card.icon}
                 </div>
 
                 {/* Title */}
-                <h3 className="text-2xl font-semibold text-gray-900 mb-4 tracking-tight">
+                <h3 className="type-h4 mb-5 text-gray-900">
                   {card.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-gray-600 leading-relaxed font-light">
+                <p className="type-body text-gray-600">
                   {card.description}
                 </p>
 
                 {/* Learn More Link */}
-                <motion.div className="mt-6 inline-flex items-center text-orange-600 font-medium transition-opacity duration-(--motion-fast) ease-(--ease-standard) group-hover:opacity-90">
+                <motion.div className="type-small type-interactive mt-8 inline-flex items-center text-orange-600 group-hover:opacity-90">
                   Learn More
                   <svg
                     className="w-4 h-4 ml-2"

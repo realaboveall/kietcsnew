@@ -2,7 +2,6 @@ import HeroVideo from "@/components/HeroVideo";
 import FixedHeader from "@/components/FixedHeader";
 
 import PlacementAnalysis from "@/components/PlacementAnalysis";
-import RecruiterWall from "@/components/RecruiterWall";
 import FacultyHighlights from "@/components/FacultyHighlights";
 import ResearchData from "@/components/ResearchData";
 import CoeShowcase from "@/components/CoeShowcase";

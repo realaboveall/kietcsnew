@@ -68,7 +68,7 @@ export default function RecruiterWall() {
           </div>
         </motion.div>
 
-        <p className="mt-4 text-xs text-slate-500">
+        <p className="type-label mt-4 text-slate-500">
           Trusted by top recruiters across domains.
         </p>
       </div>

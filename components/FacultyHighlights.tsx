@@ -268,20 +268,20 @@ export default function FacultyHighlights() {
   };
 
   return (
-    <section className="px-6 md:px-12 lg:px-24 py-24 bg-slate-50">
+    <section className="section-shell bg-slate-50">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+        <div className="mb-16 flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.32, ease: EASE_STANDARD }}
             className="will-transform">
-            <h3 className="text-3xl md:text-4xl font-semibold text-slate-900 tracking-tight">
+            <h3 className="type-h3 text-slate-900">
               Faculty Highlights
             </h3>
-            <div className="mt-4 h-1 w-20 bg-orange-500 rounded-full" />
-            <p className="text-slate-600 mt-3 max-w-3xl">
+            <div className="mt-4 h-1 w-20 rounded-full bg-orange-500" />
+            <p className="type-body mt-4 max-w-3xl text-slate-600">
               Experienced mentors with a strong mix of academic rigor and
               industry exposure.
             </p>
@@ -291,7 +291,7 @@ export default function FacultyHighlights() {
             type="button"
             onClick={() => setShowAll((prev) => !prev)}
             aria-pressed={showAll}
-            className="self-start rounded-xl bg-orange-500 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-orange-600">
+            className="type-button type-interactive self-start rounded-2xl bg-orange-500 px-6 py-3.5 text-white shadow-sm hover:bg-orange-600">
             {showAll ? "Show Horizontal" : "Show All"}
           </button>
         </div>
@@ -302,8 +302,8 @@ export default function FacultyHighlights() {
           style={showAll ? undefined : horizontalScrollStyles}
           className={
             showAll
-              ? "grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
-              : "flex gap-6 overflow-x-auto pb-2 snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              ? "grid gap-7 sm:grid-cols-2 lg:grid-cols-4"
+              : "flex gap-7 overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           }>
           {faculty.map((member, index) => (
             <motion.div
@@ -332,8 +332,8 @@ export default function FacultyHighlights() {
         </div>
 
         {!showAll && (
-          <div className="mt-4 flex items-center gap-3">
-            <span className="text-[11px] font-medium tracking-wide text-slate-400">
+          <div className="mt-6 flex items-center gap-4">
+            <span className="type-label text-slate-400">
               Scroll
             </span>
             <div className="h-1.5 w-28 overflow-hidden rounded-full bg-slate-200">
