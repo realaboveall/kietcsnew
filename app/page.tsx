@@ -7,6 +7,7 @@ import FacultyHighlights from "@/components/FacultyHighlights";
 import ResearchData from "@/components/ResearchData";
 import CoeShowcase from "@/components/CoeShowcase";
 import DeansMessage from "@/components/DeansMessage";
+import { Preloader } from "@/components/preloader";
 
 export default function Home() {
   return (
@@ -22,9 +23,9 @@ export default function Home() {
       <div id="placement" className="scroll-mt-24">
         <PlacementAnalysis />
       </div>
-      <div id="clubs" className="scroll-mt-24">
+      {/* <div id="clubs" className="scroll-mt-24">
         <RecruiterWall />
-      </div>
+      </div> */}
       <div id="publications-research" className="scroll-mt-24">
         <ResearchData />
       </div>
@@ -42,6 +43,12 @@ export default function Home() {
         <FacultyHighlights />
       </div>
       <div id="testimonials" className="scroll-mt-24" aria-hidden="true" />
+      <Preloader
+        firstLine="KIET"
+        secondLine="UNIVERSITY"
+        backgroundColor="#EEEEFF"
+        textColor="#FFFFFF"
+      />
     </main>
   );
 }

@@ -13,6 +13,7 @@ import {
   type ChartData,
   type ChartOptions,
 } from "chart.js";
+import RecruiterWall from "./RecruiterWall";
 
 const EASE_STANDARD = [0.4, 0, 0.2, 1] as const;
 
@@ -348,6 +349,9 @@ export default function PlacementAnalysis() {
                   </button>
                 ))}
               </div>
+            </div>
+            <div className="w-full">
+              <RecruiterWall />
             </div>
           </div>
         )}
